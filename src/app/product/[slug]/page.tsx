@@ -51,7 +51,7 @@ async function Product({ params }: { params: { slug: string } }) {
       <div className="col-span-4 sticky rounded-md overflow-hidden">
         <img
           className="h-[400px] w-full object-cover object-center"
-          src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4f6a28a8-6213-4bb9-b362-d5846aa39fae/dunk-low-retro-shoe-66RGqF.png"
+          src={data.data.featuredImage}
         />
       </div>
       <div className="col-span-3 transition-all translate-y-1 space-y-4">

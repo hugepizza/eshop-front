@@ -3,6 +3,7 @@
 import currency from "currency.js";
 import styles from "./Product.module.css";
 import { Quattrocento } from "next/font/google";
+import Link from "next/link";
 
 const inter = Quattrocento({ weight: "400", subsets: ["latin"] });
 
@@ -15,7 +16,8 @@ interface ProductProps {
 }
 function Product(props: ProductProps) {
   return (
-    <div
+    <Link
+      href={`/product/${props.slug}`}
       className={`h-[340px] flex flex-col max-h-full w-full rounded-md border-[1px] border-solid border-stone-300 ${styles.parent} ${inter.className}`}
     >
       <div className="w-full  overflow-hidden h-[260px]">
@@ -39,7 +41,7 @@ function Product(props: ProductProps) {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
