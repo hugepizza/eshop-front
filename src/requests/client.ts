@@ -1,4 +1,4 @@
-import ky, { Options } from "ky";
+import ky from "ky";
 
 export const api = ky.extend({
   prefixUrl: "https://eshop-api-dev.ketianjiyi.com/",

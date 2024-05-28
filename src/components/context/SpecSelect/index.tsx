@@ -48,7 +48,7 @@ function SpecSelectProvider({
 }) {
   const [value, setValue] = useState<ShoppingValue>({
     productId,
-    count: 0,
+    count: 1,
     hitSkuId,
     onSalePrice,
     price,

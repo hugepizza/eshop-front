@@ -33,6 +33,7 @@ type MultipleProducts = {
     onSalePrice?: number;
     featuredImage: string;
   }[];
+  count: number;
 };
 
 async function get(slug: string) {

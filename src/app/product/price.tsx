@@ -1,5 +1,5 @@
 'use client'
-import { SpecSelectContext } from "@/components/context/Shopping";
+import { SpecSelectContext } from "@/components/context/SpecSelect";
 import Sale from "@/components/Sale";
 import currency from "currency.js";
 import { useContext } from "react";

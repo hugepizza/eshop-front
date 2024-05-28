@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { Quattrocento } from "next/font/google";
 import { collectionApi } from "@/requests/collection";
 import { productApi } from "@/requests/prooduct";
+import Pagination from "@/components/Pagination";
 const q = Quattrocento({ weight: "400", subsets: ["latin"] });
 async function Collection({
   params,
@@ -33,7 +34,6 @@ async function Collection({
   const collection = collectionSlug
     ? await collectionApi.get(params.slug)
     : undefined;
-
 
   const products = await productApi.list(query);
 
@@ -87,6 +87,12 @@ async function Collection({
           </div>
         ))}
       </div>
+      {/* <Pagination
+        currentPage={searchParams.page ? parseInt(searchParams.page) : 1}
+        totalPages={Math.ceil(products.count / 12)}
+        edgePageCount={1}
+        middlePagesSiblingCount={1}
+      /> */}
     </section>
   );
 }

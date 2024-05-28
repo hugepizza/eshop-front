@@ -1,5 +1,5 @@
 "use client";
-import { SpecSelectContext } from "@/components/context/Shopping";
+import { SpecSelectContext } from "@/components/context/SpecSelect";
 import { Button, Input } from "@headlessui/react";
 import clsx from "clsx";
 import { useContext, useState } from "react";

@@ -4,7 +4,7 @@ import { Quattrocento } from "next/font/google";
 import Price from "../price";
 const q = Quattrocento({ weight: "400", subsets: ["latin"] });
 import Count from "../count";
-import SpecSelectProvider from "@/components/context/Shopping";
+import SpecSelectProvider from "@/components/context/SpecSelect";
 import CheckoutButton from "../checkoutButton";
 import CartButton from "../cartButton";
 import Specs from "../specs";

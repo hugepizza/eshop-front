@@ -1,6 +1,6 @@
 "use client";
 
-import { SpecSelectContext } from "@/components/context/Shopping";
+import { SpecSelectContext } from "@/components/context/SpecSelect";
 import { useContext } from "react";
 
 function CheckoutButton() {
