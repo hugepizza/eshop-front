@@ -1,11 +1,11 @@
 "use client";
-import { ShoppingContext } from "@/components/context/Shopping";
+import { SpecSelectContext } from "@/components/context/Shopping";
 import { Input } from "@headlessui/react";
 import clsx from "clsx";
 import { useContext, useState } from "react";
 
 function Count({ max }: { max: number }) {
-  const { value, setValue } = useContext(ShoppingContext);
+  const { value, setValue } = useContext(SpecSelectContext);
   return (
     <div className="border-black border-solid border-[1px] w-36 flex items-center justify-center rounded-md">
       <div
@@ -31,11 +31,11 @@ function Count({ max }: { max: number }) {
         </svg>
       </div>
       <Input
-        style={{ backgroundColor: "rgb(var(--background-rgb))" }}
+        
         max={max}
         className={clsx(
-          "text-center aspect-square w-12 border-none py-1.5 px-3  text-black",
-          "focus:outline-none"
+          "text-center aspect-square w-12 border-none py-1.5 px-3",
+          "focus:outline-none bg-background"
         )}
         value={value.count}
         name="full_name"

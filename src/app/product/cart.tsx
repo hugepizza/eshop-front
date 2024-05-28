@@ -1,10 +1,10 @@
 "use client";
 
-import { ShoppingContext } from "@/components/context/Shopping";
+import { SpecSelectContext } from "@/components/context/Shopping";
 import { useContext } from "react";
 
 function CheckoutButton() {
-  const { value } = useContext(ShoppingContext);
+  const { value } = useContext(SpecSelectContext);
   return <div onClick={() => alert(value.count)}>Checkout</div>;
 }
 

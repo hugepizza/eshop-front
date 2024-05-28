@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 
+import Link from "next/link";
 import styles from "./Collection.module.css";
 import { Quattrocento } from "next/font/google";
 
@@ -14,8 +15,9 @@ interface CollectionProps {
 }
 function Collection(props: CollectionProps) {
   return (
-    <div
-      className={`h-[500px] flex flex-col max-h-full w-full rounded-md border-[1px] border-solid border-stone-300 ${styles.parent} ${inter.className}`}
+    <Link
+      href={`/collections/${props.slug}`}
+      className={`h-[500px] flex flex-col max-h-full w-full rounded-md border-[1px] border-solid border-stone-300 ${styles.parent} ${inter.className} animate-fadeIn`}
     >
       <div className="w-full  overflow-hidden h-[420px]">
         <img
@@ -39,7 +41,7 @@ function Collection(props: CollectionProps) {
           </svg>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

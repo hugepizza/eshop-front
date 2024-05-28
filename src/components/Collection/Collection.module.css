@@ -1,6 +1,5 @@
 .parent {
   overflow: hidden;
-  animation: slip-up 0.5s ease-in-out;
 }
 
 .image-container {
@@ -18,18 +17,4 @@
 
 .parent:hover .text-container {
   transform: translateX(+25%);
-}
-
-@keyframes slip-up {
-  0% {
-    transform: translateY(5%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }

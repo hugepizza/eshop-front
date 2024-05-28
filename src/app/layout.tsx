@@ -3,6 +3,7 @@ import { Quattrocento, Quattrocento_Sans } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Foot from "@/components/Foot";
+import clsx from "clsx";
 
 const qs = Quattrocento_Sans({ weight: "400", subsets: ["latin"] });
 const q = Quattrocento({ weight: "400", subsets: ["latin"] });
@@ -19,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={qs.className}>
+      <body className={clsx(qs.className, "text-foregroundMuted")}>
         <div
-          className={`${q.className} bg-black w-full  text-center py-2 text-stone-300 text-base`}
+          className={`${q.className} bg-foreground w-full  text-center py-2 text-stone-300 text-base`}
         >
           Welcome to our store
         </div>

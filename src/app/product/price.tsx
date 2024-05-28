@@ -1,25 +1,23 @@
+'use client'
+import { SpecSelectContext } from "@/components/context/Shopping";
 import Sale from "@/components/Sale";
 import currency from "currency.js";
+import { useContext } from "react";
 
-function Price({
-  price,
-  onSalePrice,
-}: {
-  price: number;
-  onSalePrice?: number;
-}) {
+function Price() {
+  const { value } = useContext(SpecSelectContext);
   return (
     <div className="flex flex-row items-center justify-start w-full gap-2">
-      {onSalePrice ? (
+      {value.onSalePrice ? (
         <div className="line-through text-sm">
-          {currency(price).format({ symbol: "HK$" })}
+          {currency(value.price).format({ symbol: "HK$" })}
         </div>
       ) : (
-        <div>{currency(price).format({ symbol: "HK$" })}</div>
+        <div>{currency(value.price).format({ symbol: "HK$" })}</div>
       )}
-      {onSalePrice && (
+      {value.onSalePrice && (
         <>
-          <div>{currency(onSalePrice).format({ symbol: "HK$" })}</div>
+          <div>{currency(value.onSalePrice).format({ symbol: "HK$" })}</div>
           <Sale />
         </>
       )}

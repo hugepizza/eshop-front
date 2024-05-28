@@ -2,32 +2,15 @@
 /* eslint-disable @next/next/no-img-element */
 import Collection from "@/components/Collection";
 import Product from "@/components/Product";
+import { productApi } from "@/requests/prooduct";
 import { Quattrocento } from "next/font/google";
 const q = Quattrocento({ weight: "400", subsets: ["latin"] });
 
 async function Home() {
-  const params = new URLSearchParams();
-
-  params.append("page", "1");
-  params.append("pageSize", "12");
-
-  const products = await fetch(
-    "https://eshop-api-dev.ketianjiyi.com/product/search?" + params.toString(),
-    {
-      method: "GET",
-    }
-  );
-  const data = (await products.json()) as {
-    data: {
-      items: {
-        slug: string;
-        title: string;
-        price: number;
-        onSalePrice?: number;
-        featuredImage: string;
-      }[];
-    };
-  };
+  const query = new URLSearchParams();
+  query.append("page", "1");
+  query.append("pageSize", "12");
+  const products = await productApi.list(query);
 
   return (
     <section className="flex flex-col w-full justify-center items-center">
@@ -37,22 +20,22 @@ async function Home() {
       <div className="px-48 w-full grid grid-cols-3 gap-6">
         <div className="col-span-1">
           <Collection
-            slug=""
-            label="Dunk"
+            slug="best-seller"
+            label="Best Saler"
             img="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4f6a28a8-6213-4bb9-b362-d5846aa39fae/dunk-low-retro-shoe-66RGqF.png"
           />
         </div>
         <div className="col-span-2">
           <Collection
-            slug=""
-            label="Dunk"
+            slug="new-arrival"
+            label="New Arrival"
             img="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4f6a28a8-6213-4bb9-b362-d5846aa39fae/dunk-low-retro-shoe-66RGqF.png"
           />
         </div>
       </div>
       <div className="h-6" />
       <div className="px-48 w-full grid grid-cols-4 gap-4">
-        {data.data.items?.map((product) => (
+        {products.items?.map((product) => (
           <div className="col-span-1" key={product.slug}>
             <Product
               price={product.price}

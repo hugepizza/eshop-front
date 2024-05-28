@@ -18,7 +18,7 @@ function Product(props: ProductProps) {
   return (
     <Link
       href={`/product/${props.slug}`}
-      className={`h-[340px] flex flex-col max-h-full w-full rounded-md border-[1px] border-solid border-stone-300 ${styles.parent} ${inter.className}`}
+      className={`h-[340px] flex flex-col max-h-full w-full rounded-md border-[1px] border-solid border-stone-300 ${styles.parent} ${inter.className} animate-fadeIn`}
     >
       <div className="w-full  overflow-hidden h-[260px]">
         <img
@@ -27,17 +27,23 @@ function Product(props: ProductProps) {
         />
       </div>
       <div className="flex flex-col justify-center p-6 w-full max-h-[80px] shrink">
-        <div className={styles["text-container"]}>{props.label}</div>
+        <div className={`${styles["text-container"]} text-foreground`}>
+          {props.label}
+        </div>
         <div className="flex flex-row items-center justify-start w-full gap-2">
           {props.onSalePrice ? (
-            <div className="line-through text-sm">
+            <div className="line-through text-sm text-foregroundMuted">
               {currency(props.price).format({ symbol: "HK$" })}
             </div>
           ) : (
-            <div>{currency(props.price).format({ symbol: "HK$" })}</div>
+            <div className="text-foreground">
+              {currency(props.price).format({ symbol: "HK$" })}
+            </div>
           )}
           {props.onSalePrice && (
-            <div>{currency(props.onSalePrice).format({ symbol: "HK$" })}</div>
+            <div className="text-foreground">
+              {currency(props.onSalePrice).format({ symbol: "HK$" })}
+            </div>
           )}
         </div>
       </div>

@@ -1,11 +1,22 @@
 "use client";
 
-import { ShoppingContext } from "@/components/context/Shopping";
+import { SpecSelectContext } from "@/components/context/Shopping";
 import { useContext } from "react";
 
 function CheckoutButton() {
-  const { value } = useContext(ShoppingContext);
-  return <div onClick={() => alert(value.count)}>Checkout</div>;
+  const { value } = useContext(SpecSelectContext);
+  return (
+    <div
+      onClick={() => {
+        if (!value.hitSkuId) {
+          alert("?");
+        }
+        alert(value.count);
+      }}
+    >
+      Checkout
+    </div>
+  );
 }
 
 export default CheckoutButton;
