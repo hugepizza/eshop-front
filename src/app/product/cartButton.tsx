@@ -1,5 +1,6 @@
 "use client";
 
+import { reload } from "@/actions/cart";
 import { SpecSelectContext } from "@/components/context/SpecSelect";
 import { CartApi } from "@/requests/cart";
 import {
@@ -38,6 +39,7 @@ function CartButton() {
           startTransition(async () => {
             value.hitSkuId &&
               (await CartApi.update(value.hitSkuId, value.count));
+            reload();
             setIsOpen(true);
           });
         }}

@@ -1,7 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 
-import Counter from "@/components/Counter";
+import CartCounter, {
+  CartCountContextProvider,
+  PriceDisplay,
+} from "@/components/Counter/Cart";
 import { CartApi, CartItem as CartItemType } from "@/requests/cart";
 import { revalidatePath } from "next/cache";
 import { Quattrocento, Quattrocento_Sans } from "next/font/google";
@@ -52,12 +55,6 @@ function Header() {
   );
 }
 function CartItem(props: CartItemType) {
-  const update = async (quantity: number) => {
-    "use server";
-    const diff = quantity - props.count;
-    await CartApi.update(props.skuId, diff);
-    revalidatePath("/cart");
-  };
   return (
     <>
       <div className="flex flex-row space-x-8 col-span-5 border-b-[1px] border-solid border-stone-200 py-10 text-stone-500 text-start">
@@ -91,15 +88,18 @@ function CartItem(props: CartItemType) {
           </div>
         </div>
       </div>
-      <div className="col-span-2 border-b-[1px] border-solid border-stone-200 py-8 text-stone-500 text-start">
-        <Counter count={props.count} max={99} setCount={update} />
-      </div>
-      <div className="space-y-2 col-span-1 border-b-[1px] border-solid border-stone-200 py-8 text-stone-500 text-end">
-        <div className="text-sm line-through text-foregroundMuted">
-          {props.subtotal}
+      <CartCountContextProvider>
+        <div className="col-span-2 border-b-[1px] border-solid border-stone-200 py-8 text-stone-500 text-start">
+          <CartCounter
+            count={props.count}
+            max={props.stock > 99 ? 99 : props.stock}
+            skuId={props.skuId}
+          />
         </div>
-        <div className="text-foreground">{props.total}</div>
-      </div>
+        <div className="space-y-2 col-span-1 border-b-[1px] border-solid border-stone-200 py-8 text-stone-500 text-end">
+          <PriceDisplay total={props.total} subtotal={props.subtotal} />
+        </div>
+      </CartCountContextProvider>
     </>
   );
 }

@@ -7,7 +7,7 @@ interface CountProps {
   count: number;
   setCount: (count: number) => Promise<void> | void;
 }
-function Counter({ count, setCount, max }: CountProps) {
+function ProductCounter({ count, setCount, max }: CountProps) {
   const [isPending, startTransition] = useTransition();
   return (
     <div className="border-black border-solid border-[1px] w-36 flex items-center justify-center rounded-md">
@@ -85,4 +85,4 @@ function Counter({ count, setCount, max }: CountProps) {
   );
 }
 
-export default Counter;
+export default ProductCounter;

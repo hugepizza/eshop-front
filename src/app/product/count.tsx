@@ -1,12 +1,12 @@
 "use client";
 import { SpecSelectContext } from "@/components/context/SpecSelect";
-import Counter from "@/components/Counter";
+import ProductCounter from "@/components/Counter/Product";
 import { useContext, useState } from "react";
 
 function Count({ max }: { max: number }) {
   const { value, setValue } = useContext(SpecSelectContext);
   return (
-    <Counter
+    <ProductCounter
       count={value.count}
       setCount={(c) => setValue({ ...value, count: c })}
       max={max}
